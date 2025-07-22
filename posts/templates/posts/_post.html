@@ -1,0 +1,26 @@
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+  
+      <h4 class="card-text">{{ post.message_html|safe }}</h4>
+  
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <div>
+          <span class="fw-semibold">
+            <a class="text-decoration-none" href="{% url 'posts:for_user' username=post.user.username %}">
+              @{{ post.user.username }}
+            </a>
+          </span>
+          <small class="text-muted ms-2">
+            <a class="text-muted" href="{% url 'posts:single' username=post.user.username pk=post.pk %}">
+              {{ post.created_at }}
+            </a>
+          </small>
+        </div>
+  
+        {% if user.is_authenticated and post.user == user %}
+          <a href="{% url 'posts:delete' pk=post.pk %}" class="btn btn-sm btn-outline-danger" title="Delete">Delete</a>
+        {% endif %}
+      </div>
+  
+    </div>
+  </div>
