@@ -1,7 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <h1>Welcome to Star Social!</h1>
+<div class="container mt-5 text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+
+            <h1 class="display-4 fw-bold mb-3">Welcome to <span class="text-primary">Star Social</span>!</h1>
+            <p class="lead mb-4">Connect. Share. Belong. Join communities, follow conversations, and be part of something bigger.</p>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'posts:all' %}" class="btn btn-outline-primary btn-lg">Go to Feed</a>
+            {% else %}
+                <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg me-2">Login</a>
+                <a href="{% url 'accounts:signup' %}" class="btn btn-outline-secondary btn-lg">Sign Up</a>
+            {% endif %}
+
+            <hr class="my-5">
+
+            <div class="row text-start">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Create Groups</h5>
+                            <p class="card-text">Start communities on topics you care about. Bring people together.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Post Freely</h5>
+                            <p class="card-text">Share your thoughts, ideas, and stories with like-minded people.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Follow People</h5>
+                            <p class="card-text">Build your network, follow friends, and engage in meaningful conversations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 {% endblock %}
-
